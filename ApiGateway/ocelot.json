@@ -1,0 +1,68 @@
+{
+  "Routes": [
+    // Value Api
+    {
+      "DownstreamPathTemplate": "/WeatherForecast/GetRequest",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 65266
+        }
+      ],
+      "UpstreamPathTemplate": "/Weather/GetRequest",
+      "UpstreamHttpMethod": [ "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "ValueApi" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/WeatherForecast/{id}",
+      "UpstreamPathTemplate": "/Weather?id={id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 65266
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/WeatherForecast",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 65266
+        }
+      ],
+      "UpstreamPathTemplate": "/Weather",
+      "UpstreamHttpMethod": [ "GET", "POST", "Put", "Delete" ]
+    },
+
+
+
+
+    // Api / Identity
+    {
+      "DownstreamPathTemplate": "/Identity",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6001
+        }
+      ],
+      "UpstreamPathTemplate": "/Identity",
+      "UpstreamHttpMethod": [ "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "Api" ]
+      }
+    }
+
+
+  ]
+}
